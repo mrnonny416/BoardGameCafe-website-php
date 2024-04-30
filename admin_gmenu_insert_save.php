@@ -1,28 +1,32 @@
 <?php
-	session_start();
+session_start();
 ?>
 <?php
-$user_username=$_SESSION["user_username"];
-	include("Connections/connect.php");
+$user_username = $_SESSION["user_username"];
+include("Connections/connect.php");
 ?>
 <html>
-<head><titel></titel>
+
+<head>
+  <titel></titel>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-<body>
-<?php
-$gmenu_id="";
-$gmenu_name=$_POST["gmenu_name"];
-$gmenu_status=$_POST["gmenu_status"];
 
-$result=mysql_query("INSERT into group_menu values('$gmenu_id','$gmenu_name','$gmenu_status')");
-if(!$result){
-  echo"<br><h2>การบันทึกข้อผิดพลาด !!!</h2>";
-}else{
-  echo"<br><h2><center>บันทึกข้อมูล เรียนร้อยแล้ว </center></h2>";
-  echo " <meta http-equiv='refresh' content='0;URL=admin_gmenu.php'>";
-}
- ?>
+<body>
+  <?php
+  $gmenu_id = "";
+  $gmenu_name = $_POST["gmenu_name"];
+  $gmenu_status = $_POST["gmenu_status"];
+
+  $result = mysqli_query($conn, "INSERT into group_menu values('$gmenu_id','$gmenu_name','$gmenu_status')");
+  if (!$result) {
+    echo "<br><h2>การบันทึกข้อผิดพลาด !!!</h2>";
+  } else {
+    echo "<br><h2><center>บันทึกข้อมูล เรียนร้อยแล้ว </center></h2>";
+    echo " <meta http-equiv='refresh' content='0;URL=admin_gmenu.php'>";
+  }
+  ?>
 
 </body>
+
 </html>

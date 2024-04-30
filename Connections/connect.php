@@ -1,11 +1,15 @@
 <?php
-$username_connect = "root";
-$password_connect = "root";
-$hostname_connect = "localhost";
-$database_connect = "isaradee2018";
+// กำหนดค่าพื้นฐานสำหรับการเชื่อมต่อฐานข้อมูล
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "isaradee2018";
 
-$connection = mysql_connect($hostname_connect,$username_connect,$password_connect) or die ("Unable to connect to MySQL server.");
-$db = mysql_select_db($database_connect,$connection) or die ("Unable to select database.");
+// สร้างการเชื่อมต่อฐานข้อมูล
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-mysql_query("SET NAMES UTF8");
+// ตรวจสอบการเชื่อมต่อ
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 ?>
